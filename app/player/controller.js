@@ -281,7 +281,7 @@ module.exports = {
           console.log(player);
           res.status(201).json({
             data: {
-              id: player._id,
+              id: player.id,
               name: player.name,
               phoneNumber: player.phoneNumber,
               avatar: player.avatar,
@@ -290,7 +290,7 @@ module.exports = {
         });
 
         src.on('err', async () => {
-          next();
+          next(err);
         });
       } else {
         const player = await Player.findOneAndUpdate(
@@ -303,7 +303,7 @@ module.exports = {
 
         res.status(201).json({
           data: {
-            id: player._id,
+            id: player.id,
             name: player.name,
             phoneNumber: player.phoneNumber,
             avatar: player.avatar,
